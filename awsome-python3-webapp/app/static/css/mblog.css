@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/**
+ *
+ * @authors moling (365024424@qq.com)
+ * @date    2016-05-27 20:34:36
+ * @version $Id$
+ */
+body {
+    background-color: #ebebeb;
+}
+
+#go-top {
+    position: fixed;
+    bottom: 180px;
+    right: 20px;
+}
+#go-top:hover {
+    color: orange;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    border: 0;
+}
+.content-wrap {
+    margin-top: 35px;
+}
+
+.user-image {
+    background-color: #ffffff;
+    padding: 21px 30px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.blog-tags {
+    background-color: #ffffff;
+    min-height: 200px;
+    padding: 21px 30px;
+    margin-bottom: 35px;
+}
+
+#tags a, #project-list a{
+    border: 1px solid #ebebeb;
+    padding: 2px 7px;
+    color: #959595;
+    line-height: 1.5em;
+    display: inline-block;
+    margin: 0 7px 7px 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+#tags a:hover, #project-list a:hover
+{
+    background-color:#ffba5e;
+    color: #ffffff;
+}
+
+
+#vm-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.blog-post {
+    background-color: #ffffff;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.blog-post-meta {
+margin-bottom: 25px;
+color: #999;
+}
+
+#manage-table{
+    table-layout: fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+}
+#manage-table td{
+    width: 100%;
+    word-break: keep-all;/* 不换行 */
+    white-space: nowrap;/* 不换行 */
+    overflow: hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一 起使用。*/
+}
+
+#footer {
+    color: #cccccc;
+    background-color: #111;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+#footer > div {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#about {
+    border: 1px solid #000;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+
+
+/* 小屏幕（平板，大于等于768像素） */
+@media (min-width: 768px) {
+    #about {
+        width: 90%;
+    }
+
+}
+
+/*  中屏幕（桌面显示器，大于等于992像素） */
+@media (min-width: 992px) {
+    .blog-post {
+        padding: 15px 25px;
+        margin-bottom: 35px;
+    }
+
+    #about {
+        width: 80%;
+    }
+
+}
+
+/*  大屏幕（大桌面显示器，大于等于1200像素） */
+@media (min-width: 1200px) {
+    #about {
+        width: 60%;
+    }
+
+}
+

@@ -5,8 +5,6 @@
 # @Link    : #
 # @Version : 0.1
 from app.frame import get
-from app.frame.halper import Page, set_valid_value
-from app.models import Blog
 
 
 # 测试
@@ -25,12 +23,10 @@ async def index():
 
 @get('/{template}/')
 async def home(template, *, tag='', page='1', size='10'):
-    num = await Blog.countRows(where="position(? in `summary`)", args=[tag])
-    page = Page(num, set_valid_value(page), set_valid_value(size, 10))
-    if num == 0:
-        blogs = []
-    else:
-        blogs = await Blog.findAll("position(? in `summary`)", [tag], orderBy='created_at desc', limit=(page.offset, page.limit))
+    #num = await Blog.countRows(where="position(? in `summary`)", args=[tag])
+    #page = Page(num, set_valid_value(page), set_valid_value(size, 10))
+    blogs = []
+	
     return {
         '__template__': '%s-blogs.html' % (template),
         'blogs': blogs,

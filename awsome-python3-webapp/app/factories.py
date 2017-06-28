@@ -10,8 +10,6 @@ import json
 from aiohttp import web
 from urllib import parse
 
-from app import COOKIE_NAME
-from app.models import User
 # -------------------------工厂函数------------------------------------
 # 在每个响应之前打印日志
 async def logger_factory(app, handler):
@@ -19,17 +17,6 @@ async def logger_factory(app, handler):
         logging.info('Response: %s %s' % (request.method, request.path))
         return await handler(request)
     return logger
-
-# 通过cookie找到当前用户信息，把用户绑定在request.__user__
-async def auth_factory(app, handler):
-    async def auth(request):
-        logging.info('check user: %s %s' % (request.method, request.path))
-        cookie = request.cookies.get(COOKIE_NAME)
-        request.__user__ = await User.find_by_cookie(cookie)
-        if request.__user__ is not None:
-            logging.info('set current user: %s' % request.__user__.email)
-        return await handler(request)
-    return auth
 
 async def data_factory(app, handler):
     async def parse_data(request):
@@ -83,7 +70,7 @@ async def response_factory(app, handler):
                 return resp
             else:
                 # 如果用jinja2渲染，绑定已验证过的用户
-                r['__user__'] = request.__user__
+                #r['__user__'] = request.__user__
                 resp = web.Response(body=app['__templating__'].get_template(template).render(**r).encode('utf-8'))
                 resp.content_type = 'text/html;charset=utf-8'
                 return resp
